@@ -1,3 +1,8 @@
+Updated the code from this tutorial to use Hooks instead of classes. I also tweaked the backend API to make it RESTful. If anyone more experienced sees any changes that need to be made please let me know or make a pull request.
+
+
+Original:
+
 Code for MERN tutorial.
 
 Video Tutorial: https://www.youtube.com/watch?v=7CqJlxBYj-M
