@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Exercise(props) {
+
+  const styleObj = {
+    padding: 0,
+    verticalAlign: "baseline",
+  };
+
   return (
     <tr>
       <td>{props.exercise.username}</td>
@@ -10,7 +16,7 @@ function Exercise(props) {
       <td>{props.exercise.duration}</td>
       <td>{props.exercise.date.substring(0,10)}</td>
       <td>
-        <Link to={"/exercises/"+props.exercise._id+"/edit"}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+        <Link to={"/exercises/"+props.exercise._id+"/edit"}>edit</Link> | <button type="button" className="btn btn-link" style={styleObj} onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</button>
       </td>
     </tr>
   );
