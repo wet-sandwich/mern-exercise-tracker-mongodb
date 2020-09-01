@@ -7,7 +7,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.route('/').post((req, res) => {
   const username = req.body.username;
   const description = req.body.description;
   const duration = Number(req.body.duration);
@@ -37,18 +37,14 @@ router.route('/:id').delete((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
-  Exercise.findById(req.params.id)
-    .then(exercise => {
-      exercise.username = req.body.username;
-      exercise.description = req.body.description;
-      exercise.duration = Number(req.body.duration);
-      exercise.date = Date.parse(req.body.date);
-
-      exercise.save()
-        .then(() => res.json('Exercise updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
+router.route('/:id').put((req, res) => {
+  Exercise.findByIdAndUpdate(req.params.id, {
+    username: req.body.username,
+    description: req.body.description,
+    duration: Number(req.body.duration),
+    date: Date.parse(req.body.date),
+  })
+    .then(() => res.json('Exercise updated!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
